@@ -1,0 +1,40 @@
+ <!--Content-->
+ <div class="container mt-5 mb-5">
+    <form [formGroup]="signupForm" (ngSubmit)="onSubmit()">
+        <fieldset>
+            <legend>Signup</legend>
+            <div class="md-form mt-3">
+                <mdb-icon fas icon="user" class="prefix"></mdb-icon>
+                <input mdbInput formControlName="username" type="text" id="username" class="form-control" />
+                <label class="" for="username">Username</label>
+                <mdb-error *ngIf="username != null && username.invalid && username.touched">Invalid Username</mdb-error>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="md-form mt-3">
+                        <mdb-icon fas icon="envelope" class="prefix"></mdb-icon>
+                        <input mdbInput formControlName="email" type="email" id="email" class="form-control" />
+                        <label class="form-label" for="email">Email</label>
+                        <mdb-error *ngIf="email != null && email.invalid && email.touched">Invalid Email</mdb-error>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="md-form mt-3">
+                        <mdb-icon fas icon="lock" class="prefix"></mdb-icon>
+                        <input mdbInput formControlName="password" type="password" id="password" class="form-control" />
+                        <label class="form-label" for="password">Password</label>
+                        <mdb-error *ngIf="password != null && password.invalid && password.touched">Invalid Password</mdb-error>
+                    </div>
+                </div>
+            </div>
+            <div class="md-form mt-3">
+                <mdb-icon fas icon="calendar" class="prefix"></mdb-icon>
+                <input mdbInput formControlName="birthdate" type="date" id="birthdate" class="form-control">
+                <label class="" for="birthdate">Birtdate</label>
+                <mdb-error *ngIf="birthdate != null && birthdate.invalid && birthdate.touched">Invalid Birthdate</mdb-error>
+            </div>
+        </fieldset>
+
+        <button class="btn btn-primary mt-5">Signup</button>
+    </form>
+</div>

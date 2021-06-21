@@ -1,0 +1,25 @@
+<!--Content-->
+<div class="container mt-5 mb-5">
+    <form [formGroup]="postForm"(ngSubmit)="onSubmit()">
+        <fieldset>
+            <legend>New Post</legend>
+            <p class="text-danger" *ngIf="error">All fields must be not blank</p>
+            <div class="md-form mt-3">
+                <input mdbInput formControlName="title" type="text" id="title" class="form-control" />
+                <label class="" for="title">Title</label>
+                <mdb-error *ngIf="title != null && title.invalid && title.touched">Invalid Title</mdb-error>
+            </div>
+            <div class="md-form mt-3">
+                <input mdbInput formControlName="description" type="text" id="description" class="form-control" />
+                <label class="" for="description">Description</label>
+                <mdb-error *ngIf="description != null && description.invalid && description.touched">Invalid description</mdb-error>
+            </div>
+            <div class="mt-3">
+                <label class="form-label" for="file">Image: </label>
+                <input (change)="selectFile($event)" type="file" formControlName="filePath" id="file" class="form-control" placeholder="file">
+            </div>
+        </fieldset>
+
+        <button class="btn btn-primary mt-5">Submit</button>
+    </form>
+</div>

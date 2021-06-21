@@ -1,0 +1,44 @@
+<!--Content-->
+<div class="container mt-5 mb-5">
+    <div class="text-center">
+        <img src="http://localhost:8080/image/{{post?.image}}" class="img-fluid" alt="Image for post: {{post?.name}}">
+    </div>
+    <div class="mt-5">
+        <div class="d-flex">
+            <div class="me-5">
+                <div (click)="upvote(post)" class="btn"><fa-icon [icon]="faChevronUp" [ngClass]="post?.userVote == 1 ? 'text-primary' : ''"></fa-icon></div>
+                <div class="ms-3">{{post?.voteCount}}</div>
+                <div (click)="downvote(post)" class="btn"><fa-icon [icon]="faChevronDown" [ngClass]="post?.userVote == -1 ? 'text-primary' : ''"></fa-icon></div>
+            </div>
+            <div>
+                <h1>{{post?.name}}</h1>
+                <p>Author: {{post?.creator}}</p>
+            </div>
+        </div>
+        <hr>
+        <p>{{post?.description}}</p>
+    </div>
+
+    <div class="mt-5 mb-3">
+        <h2>Comments</h2>
+        <hr>
+
+        <div class="mb-5">
+            <form [formGroup]="commentForm" (ngSubmit)="submitComment()">
+                <div class="md-form">
+                    <input mdbInput formControlName="comment" type="text" id="comment" class="form-control" />
+                    <label class="" for="comment">Comment</label>
+                </div>
+                <button class="btn btn-primary">Submit</button>
+            </form>
+        </div>
+
+        <div class="card w-100 mt-2" *ngFor="let comment of comments">
+            <div class="card-body">
+                <p class="card-text">{{comment.comment}}</p>
+                <small>Comment By {{comment.username}} </small>
+                <small>{{comment.created}}</small>
+            </div>
+        </div>
+    </div>
+</div>

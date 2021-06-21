@@ -1,0 +1,30 @@
+<app-carousel></app-carousel>>
+<!--Content-->
+<div class="container mt-5 mb-5">
+    <h2 class="mb-1">Recent Images</h2>
+    <div class="row">
+
+        <div class="col-sm-6 col-md-4 mt-4" *ngFor="let post of posts">
+            <div class="card">
+                <img class="card-img-top" src="http://localhost:8080/image/{{post.image}}" alt="Card image cap">
+                <div class="card-body">
+                    <hr>
+                    <div class="d-flex">
+                        <div class="me-5">
+                            <div (click)="upvote(post)" class="btn"><fa-icon [icon]="faChevronUp" [ngClass]="post.userVote == 1 ? 'text-primary' : ''"></fa-icon></div>
+                            <div class="ms-3">{{post.voteCount}}</div>
+                            <div (click)="downvote(post)" class="btn"><fa-icon [icon]="faChevronDown" [ngClass]="post.userVote == -1 ? 'text-primary' : ''"></fa-icon></div>
+                        </div>
+                        <div>
+                            <h5 class="card-title"><a routerLink="/post/{{post.id}}">{{post.name}}</a></h5>
+                            <p class="card-text">{{post.description | cutText}}</p>
+                            <small>{{post.commentCount}} Comments</small><br>
+                            <small>{{post.created}}</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
